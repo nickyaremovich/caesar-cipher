@@ -6,6 +6,13 @@ def caesar_cipher(string, shift)
       position = char.ord - start # for a it would be 97-97=0
       new_position = (position + shift) % 26 # actual shift occurs here / modulo 26 to wrap z -> a
       (new_position + start).chr #add back the original ASCII value and convert to char
+    elsif char.match?(/[A-Z]/)
+      start = "A".ord
+      position = char.ord - start
+      new_position = (position + shift) % 26
+      (new_position + start).chr
+    else
+      char
     end
   end.join
 end
